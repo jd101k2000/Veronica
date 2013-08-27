@@ -14,24 +14,52 @@
  * @package WordPress
  */
 
+
+/*
+ * Unified variables
+ */
+$user_name = 'root';
+$hostname = 'localhost';
+$charset = 'UTF-8';
+$collate = '';
+/*
+ * Check for the current environment
+ */
+if ($_SERVER["HTTP_HOST"] === 'ver.cloud-genius.com') {
+  $db_name = 'ver1323906163564';
+  $user_name = 'ver1323906163564';
+  $hostname = 'ver1323906163564.db.7567312.hostedresource.com';
+  $charset = 'UTF-8';
+  $password = 'y8P%20p9';
+  $urlpath = "/";
+} else if ($_SERVER["HTTP_HOST"] === '127.0.0.1:8080') {
+  $db_name = 'bitnami_wordpress';
+  $user_name = 'bn_wordpress';
+  $hostname = 'localhost:3306';
+  $charset = 'UTF-8';
+  $password = '8b073924f9';
+  $urlpath = "/wordpress";
+}
+
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'bitnami_wordpress');
+define('DB_NAME', $db_name);
 
 /** MySQL database username */
-define('DB_USER', 'bn_wordpress');
+define('DB_USER', $user_name);
 
 /** MySQL database password */
-define('DB_PASSWORD', '8b073924f9');
+define('DB_PASSWORD', $password);
 
 /** MySQL hostname */
-define('DB_HOST', 'localhost:3306');
+define('DB_HOST', $hostname);
 
 /** Database Charset to use in creating database tables. */
-define('DB_CHARSET', 'utf8');
+define('DB_CHARSET', $chartset);
 
 /** The Database Collate type. Don't change this if in doubt. */
-define('DB_COLLATE', '');
+define('DB_COLLATE', $collate);
+
 
 /**#@+
  * Authentication Unique Keys and Salts.
@@ -90,8 +118,8 @@ define('WP_DEBUG', false);
  *
 */
 
-define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] . '/wordpress');
-define('WP_HOME', 'http://' . $_SERVER['HTTP_HOST'] . '/wordpress');
+define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] . $urlpath);
+define('WP_HOME', 'http://' . $_SERVER['HTTP_HOST'] . $urlpath);
 
 
 /** Absolute path to the WordPress directory. */
